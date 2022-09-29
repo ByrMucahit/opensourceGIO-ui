@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  API_URL: "https://webhook.site/a3972510-d9e2-4704-ab49-f8e674622e70"
 };
 
 /*
