@@ -3,7 +3,7 @@
     <form class="row g-3" [formGroup]="importRepositoryForm" (ngSubmit)="import()">
       <div class="col-auto">
         <label for="organization" class="visually-hidden">Organization</label>
-        <input type="email" class="form-control" id="organization" placeholder="Organization" formControlName="organization">
+        <input type="text" class="form-control" id="organization" placeholder="Organization" formControlName="organization">
       </div>
 
       <div class="col-auto">
@@ -11,7 +11,7 @@
         <input type="text" class="form-control" id="repository" placeholder="Repository" formControlName="repository">
       </div>
       <div class="col-auto">
-        <button type="submit" class="btn btn-primary mb-3"><i class="fa fa-plus fa-fw"></i> Import</button>
+        <button type="submit" class="btn btn-primary mb-3" [disabled]="loading"><i class="fa fa-plus fa-fw"></i> Import</button>
       </div>
 
 

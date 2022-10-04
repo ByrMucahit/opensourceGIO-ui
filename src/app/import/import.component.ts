@@ -3,6 +3,7 @@ import {Validators} from "@angular/forms";
 import {FormBuilder} from "@angular/forms";
 import {RepositoryService} from "../services/repository.service";
 import {first} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-import',
@@ -11,7 +12,9 @@ import {first} from "rxjs";
 })
 export class ImportComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private repositoryService: RepositoryService ) { }
+  loading = false;
+
+  constructor(private formBuilder: FormBuilder, private repositoryService: RepositoryService, private router: Router ) { }
 
   importRepositoryForm =  this.formBuilder.group({
     organization: ['', Validators.required],
@@ -23,6 +26,21 @@ export class ImportComponent implements OnInit {
   }
 
   import() {
-    this.repositoryService.import(this.importRepositoryForm.get('organization')?.value, this.importRepositoryForm.get('repository')?.value).pipe(first)
+    this.loading = true;
+    this.repositoryService.import(this.importRepositoryForm.get('organization')?.value || '',
+      this.importRepositoryForm.get('repository')?.value ||'')
+      .pipe(first())
+      .subscribe(() => {
+        this.loading = false;
+        alert("Imported succesfully")
+        setTimeout(() => {
+          this.router.navigate(['home']);
+        }, 2000);},
+
+        error => {
+        this.loading = false;
+        console.error(error);
+        alert(error);
+        });
   }
 }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: "https://webhook.site/a3972510-d9e2-4704-ab49-f8e674622e70"
+  API_URL: "http://localhost:8080"
 };
 
 /*
