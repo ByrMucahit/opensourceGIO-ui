@@ -12,7 +12,7 @@
       <tr *ngFor="let repository of repositories">
         <td>{{repository.organization}}</td>
         <td>{{repository.name}}</td>
-        <td><a class="btn btn-primary" [routerLink]="['repository', repository.id, 'issues']" role="button"><i
+        <td><a class="btn btn-primary" [routerLink]="['/repository', repository.id, 'issues']" role="button"><i
           class="fa-solid fa-bug"></i>Issues</a></td>
       </tr>
 
