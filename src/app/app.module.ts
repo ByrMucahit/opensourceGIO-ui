@@ -14,6 +14,7 @@ import { AcceptComponent } from './challenges/accept/accept.component';
 import { RejectComponent } from './challenges/reject/reject.component';
 import { ChallengeListComponent } from './challenges/challenge-list/challenge-list.component';
 import { ToastrModule } from 'ngx-toastr';
+import { StatusComponent } from './badges/status/status.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -34,7 +35,8 @@ const routes: Routes = [
     IssueListComponent,
     AcceptComponent,
     RejectComponent,
-    ChallengeListComponent
+    ChallengeListComponent,
+    StatusComponent
   ],
   imports: [
     BrowserModule,
