@@ -15,14 +15,19 @@ import { RejectComponent } from './challenges/reject/reject.component';
 import { ChallengeListComponent } from './challenges/challenge-list/challenge-list.component';
 import { ToastrModule } from 'ngx-toastr';
 import { StatusComponent } from './badges/status/status.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { GithubCallbackComponent } from './auth/github-callback/github-callback.component';
+import {PermissionService} from "./_services/permission.service";
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent},
-  {path: 'import', component: ImportComponent},
-  {path: 'repository/:id/issues', component: IssueListComponent},
-  {path: 'challenge/:id/accept', component: AcceptComponent},
-  {path: 'challenge/:id/reject', component: RejectComponent},
-  {path: 'challenges', component: ChallengeListComponent},
+  {path: 'home', component: HomeComponent, canActivate: [PermissionService]},
+  {path: 'import', component: ImportComponent, canActivate: [PermissionService]},
+  {path: 'repository/:id/issues', component: IssueListComponent, canActivate: [PermissionService]},
+  {path: 'challenge/:id/accept', component: AcceptComponent, canActivate: [PermissionService]},
+  {path: 'challenge/:id/reject', component: RejectComponent, canActivate: [PermissionService]},
+  {path: 'challenges', component: ChallengeListComponent, canActivate: [PermissionService]},
+  {path: 'signin', component: SigninComponent},
+  {path: 'auth/github/callback', component: GithubCallbackComponent, canActivate: [PermissionService]},
   {path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 
@@ -36,7 +41,9 @@ const routes: Routes = [
     AcceptComponent,
     RejectComponent,
     ChallengeListComponent,
-    StatusComponent
+    StatusComponent,
+    SigninComponent,
+    GithubCallbackComponent
   ],
   imports: [
     BrowserModule,
